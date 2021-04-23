@@ -1,0 +1,22 @@
+.sort-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(218, 238, 228);
+  span {
+    font-weight: bold;
+  }
+  li {
+    display: inline-block;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid rgb(87, 131, 124);
+  }
+}
+
+.sort-active {
+  background: rgb(87, 131, 124);
+  color: white;
+}
