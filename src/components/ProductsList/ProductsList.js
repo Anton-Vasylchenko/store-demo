@@ -23,7 +23,7 @@ function ProductsList() {
         apiServices.getProducts().then(data => {
             setLoading(false);
             const sortData = sortProducts(data, 'name');
-            setProducts(data);
+            setProducts(sortData);
         });
     }
 
