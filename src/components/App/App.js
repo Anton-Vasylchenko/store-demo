@@ -10,6 +10,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route path="/" exact component={ProductsList} />
+
         <Route path="/:id" render={({ match }) => {
           return <ProductDetails itemId={match.params.id} exact />
         }} />

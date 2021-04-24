@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router } from 'react-router-dom';
-import App from './components/App';
 import ScrollToTop from './components/ScrollToTop';
+import App from './components/App';
+
 
 ReactDOM.render(
   <React.StrictMode>
