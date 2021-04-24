@@ -15,10 +15,12 @@ function ProductDetails({ itemId }) {
     const apiService = new ApiServices();
 
     const [product, setProduct] = React.useState(null);
+    const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
         apiService.getProductById(itemId).then(data => {
             setProduct(data);
+            setLoading(false);
         })
     }, [itemId]);
 
@@ -27,20 +29,24 @@ function ProductDetails({ itemId }) {
     }
 
     const updateProduct = async (newItem) => {
-        apiService.updateProduct(itemId, newItem).then(e => {
-            setProduct(e);
+        setLoading(true);
+        apiService.updateProduct(itemId, newItem).then(data => {
+            setProduct(data);
+            setLoading(false);
         })
     }
 
     return (
         <Container>
             <div className="content-wrapper">
-                {product ?
+                {loading ? <Spinner /> :
+                    product &&
                     <ProductView item={product}
                         defImg={addDefaultSrc}
-                        updateProduct={updateProduct} />
-                    : <Spinner />
+                        updateProduct={updateProduct}
+                    />
                 }
+
                 {product && <CommentsList comments={product.comments} />}
             </div>
         </Container>
@@ -61,11 +67,10 @@ const ProductView = ({ item, defImg, updateProduct }) => {
                     <BtnCreateElement
                         nameBtn={'Edit'}
                         action={'edit'}
-                        type={'form'}
+                        type={'product'}
                         item={item}
                         handleSubmit={updateProduct}
                     />
-
                 </div>
 
                 <Row>
@@ -79,14 +84,15 @@ const ProductView = ({ item, defImg, updateProduct }) => {
                             {item.info}
                         </div>
                         <div className="product-details__options">
-                            <div className="options options__size">
+
+                            <div className="option options__size">
                                 <span>Висота: {item.size.height}</span>
                                 <span>Ширина: {item.size.width}</span>
                             </div>
-                            <div className="options options__weight">
+                            <div className="option options__weight">
                                 <span>Вага: {item.weight}</span>
                             </div>
-                            <div className="options options__count">
+                            <div className="option options__count">
                                 <span>В наявності: {item.count} шт.</span>
                             </div>
 

@@ -2,8 +2,8 @@ import React from 'react'
 import './SortFilter.scss';
 
 const sortFilters = [
-    { title: 'Імені', type: 'name' },
-    { title: 'Кількості', type: 'count' }
+    { title: 'Name', type: 'name' },
+    { title: 'Quantity', type: 'count' }
 ];
 
 function SortFilter({ onToggleSort }) {
@@ -20,7 +20,7 @@ function SortFilter({ onToggleSort }) {
 
     return (
         <div className="sort-filter">
-            <span>Сортувати по:</span>
+            <span>Sort by:</span>
             <ul>
                 {sortFilters &&
                     sortFilters.map((el, index) => {

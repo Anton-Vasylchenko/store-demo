@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
 import PopupDelete from '../PopupDelete';
 
+
 import NoImage from '../../assets/no-image.png';
 
 import './Product.scss';
@@ -47,12 +48,12 @@ function Product({ item, onDelete }) {
                 </Col>
                 <Col xs={12} md={7}>
                     <div className="product__info"> {info} </div>
-                    <div className="product__count"> В наявності: {count} шт.</div>
+                    <div className="product__count"> In stock: {count} pcs.</div>
                 </Col>
             </Row>
             <div className="product__link">
                 <Link to={`/${id}`}>
-                    <Button variant="info">Детальніше...</Button>
+                    <Button variant="info">More details...</Button>
                 </Link>
             </div>
         </div>

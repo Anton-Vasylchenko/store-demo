@@ -6,13 +6,11 @@ import App from './components/App';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <ScrollToTop>
-        <App />
-      </ScrollToTop>
-    </Router>
-  </React.StrictMode>,
+  <Router>
+    <ScrollToTop>
+      <App />
+    </ScrollToTop>
+  </Router>,
   document.getElementById('root')
 );
 

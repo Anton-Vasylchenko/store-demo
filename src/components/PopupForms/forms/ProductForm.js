@@ -54,7 +54,7 @@ function ProductForm({ details }) {
 
     return (
         <>
-            <Modal animation={false} show={show} onHide={onCancelHandle}>
+            <Modal animation={true} show={show} onHide={onCancelHandle}>
 
                 <Modal.Header closeButton>
                     <Modal.Title>{formTitle} Product</Modal.Title>
@@ -136,7 +136,7 @@ function ProductForm({ details }) {
                         </Button>
 
                         <Button className="m-2" variant="primary" type="button" onClick={onHandleSubmit}>
-                            Ok
+                            {action === 'edit' ? 'Save' : 'Create'}
                         </Button>
                     </Form>
                 </Modal.Body>

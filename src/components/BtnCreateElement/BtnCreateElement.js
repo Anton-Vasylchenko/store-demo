@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap';
-import PopupForm from '../PopupForm';
+import PopupForms from '../PopupForms';
 
 import './BtnCreateElement.scss';
 
@@ -19,7 +19,7 @@ function BtnCreateElement({ nameBtn, type, action, handleSubmit, item }) {
 
     return (
         <div className="btn-create-element">
-            <PopupForm
+            <PopupForms
                 show={show}
                 handleNo={handleNo}
                 handleYes={handleYes}

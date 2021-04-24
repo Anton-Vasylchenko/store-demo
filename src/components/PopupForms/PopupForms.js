@@ -3,12 +3,10 @@ import React from 'react';
 import ProductForm from './forms/ProductForm';
 import CommentForm from './forms/CommentForm';
 
-import './PopupForm.scss';
-
 function PopupForm(props) {
     const { type } = props;
 
-    const FormView = type === 'form' ?
+    const FormView = type === 'product' ?
         <ProductForm details={props} /> :
         <CommentForm details={props} />;
 

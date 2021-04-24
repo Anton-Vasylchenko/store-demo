@@ -62,16 +62,21 @@ function ProductsList() {
                 <SortFilter onToggleSort={onChangeSort} />
 
                 <BtnCreateElement
-                    nameBtn={'+New'}
-                    type={'form'}
+                    nameBtn={'+Add Product'}
+                    type={'product'}
                     action={'create'}
                     handleSubmit={createProduct}
                 />
 
                 {loading ? <Spinner /> :
                     products && products.map(elem => {
-                        return <Product item={elem} key={elem.id} onDelete={delProduct} />
-                    })}
+                        return <Product item={elem}
+                            key={elem.id}
+                            onDelete={delProduct}
+                        />
+                    })
+                }
+
             </div>
         </Container>
     )

@@ -7,7 +7,7 @@ function CommentForm({ details }) {
 
     return (
         <>
-            <Modal animation={false} show={show} onHide={handleNo}>
+            <Modal animation={true} show={show} onHide={handleNo}>
                 <Modal.Header closeButton>
                     <Modal.Title>Create New Comment</Modal.Title>
                 </Modal.Header>

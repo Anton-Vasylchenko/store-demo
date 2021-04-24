@@ -7,9 +7,9 @@ function CommentsList({ comments }) {
     return (
         <div className="comments-list">
             <h4>
-                Коментарі
+                Comments:
             </h4>
-            <BtnCreateElement nameBtn={'+New'} type={'comment'} />
+            <BtnCreateElement nameBtn={'+Add comment'} type={'comment'} />
 
             {comments.length > 0 ? comments.map(item => {
                 return (
