@@ -1,5 +1,4 @@
 import React from 'react'
-import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import './SortFilter.scss';
 
 const sortFilters = [
@@ -20,22 +19,20 @@ function SortFilter({ onToggleSort }) {
     }, [])
 
     return (
-        <ScrollToTop>
-            <div className="sort-filter">
-                <span>Сортувати по:</span>
-                <ul>
-                    {sortFilters &&
-                        sortFilters.map((el, index) => {
-                            return <li
-                                key={`${el.title}_${index}`}
-                                className={activeBtn === index ? 'sort-active' : ''}
-                                onClick={() => { toggleActive(index, el.type) }}> {el.title}
-                            </li>
-                        })
-                    }
-                </ul>
-            </div>
-        </ScrollToTop>
+        <div className="sort-filter">
+            <span>Сортувати по:</span>
+            <ul>
+                {sortFilters &&
+                    sortFilters.map((el, index) => {
+                        return <li
+                            key={`${el.title}_${index}`}
+                            className={activeBtn === index ? 'sort-active' : ''}
+                            onClick={() => { toggleActive(index, el.type) }}> {el.title}
+                        </li>
+                    })
+                }
+            </ul>
+        </div>
     );
 }
 
