@@ -17,6 +17,7 @@ function ProductsList() {
 
     React.useEffect(() => {
         updateProducts();
+        window.scrollTo(0, 0);
     }, []);
 
     const updateProducts = () => {

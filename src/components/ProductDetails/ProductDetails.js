@@ -20,8 +20,6 @@ function ProductDetails({ itemId }) {
         apiService.getProductById(itemId).then(data => {
             setProduct(data);
         })
-
-        window.scrollTo(0, 0);
     }, [itemId]);
 
     const addDefaultSrc = (ev) => {
