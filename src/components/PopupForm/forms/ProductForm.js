@@ -25,7 +25,7 @@ function ProductForm({ details }) {
         }
 
         if (!name || !imageUrl || !weight || !count || !info || !height || !width) {
-            showErrorMsg();
+            setError(true);
             return;
         }
 
@@ -47,10 +47,6 @@ function ProductForm({ details }) {
         setWidth('');
         setHeight('');
         setCount('');
-    }
-
-    const showErrorMsg = () => {
-        setError(!error);
     }
 
     const formTitle = action === 'create' ? 'Create New ' : 'Edit ';
@@ -138,7 +134,7 @@ function ProductForm({ details }) {
                             Cancel
                         </Button>
 
-                        <Button className="m-2" variant="primary" type="submit" onClick={onHandleSubmit}>
+                        <Button className="m-2" variant="primary" type="button" onClick={onHandleSubmit}>
                             Ok
                         </Button>
                     </Form>

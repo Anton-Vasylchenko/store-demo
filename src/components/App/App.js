@@ -3,8 +3,6 @@ import ProductsList from '../ProductsList';
 import ProductDetails from '../ProductDetails';
 import { Route, Switch } from 'react-router-dom';
 
-import ScrollToTop from '../ScrollToTop/ScrollToTop';
-
 import './App.css';
 
 function App() {
