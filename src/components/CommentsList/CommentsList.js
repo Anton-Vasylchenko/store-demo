@@ -1,11 +1,15 @@
 import React from 'react';
+import BtnCreateElement from '../BtnCreateElement';
 
 import './CommentsList.scss';
 
 function CommentsList({ comments }) {
     return (
         <div className="comments-list">
-            <h4>Коментарі</h4>
+            <h4>
+                Коментарі
+            </h4>
+            <BtnCreateElement nameBtn={'+New'} type={'comment'} />
 
             {comments.length > 0 ? comments.map(item => {
                 return (

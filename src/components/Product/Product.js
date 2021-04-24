@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
 import PopupDelete from '../PopupDelete';
 
+import NoImage from '../../assets/no-image.png';
+
 import './Product.scss';
 
 function Product({ item, onDelete }) {
@@ -10,12 +12,19 @@ function Product({ item, onDelete }) {
     const [show, setShow] = React.useState(false);
 
     const handleNo = () => setShow(false);
+
     const handleYes = () => {
-        setShow(false);
+        toggleShow();
         onDelete(id);
     };
 
-    const handleShow = () => setShow(true);
+    const toggleShow = () => {
+        setShow(!show);
+    };
+
+    const addDefaultSrc = (ev) => {
+        ev.target.src = NoImage;
+    }
 
     return (
         <div className="product">
@@ -28,12 +37,12 @@ function Product({ item, onDelete }) {
             />
 
             <div className="product__name">{name}
-                <div className="product__del" onClick={handleShow}>x</div>
+                <div className="product__del" onClick={toggleShow}>x</div>
             </div>
             <Row>
                 <Col xs={12} md={5}>
                     <div className="product__image">
-                        <img src={imageUrl} alt="product" />
+                        <img onError={addDefaultSrc} src={imageUrl} alt="product" />
                     </div>
                 </Col>
                 <Col xs={12} md={7}>

@@ -14,12 +14,35 @@ class ApiServices {
         const res = await fetch('https://608298915dbd2c0017579fcc.mockapi.io/api/v1/' + url, {
             method: 'DELETE',
         });
-
         const body = res.json();
         return body;
     }
 
+    addResource = async (obj) => {
+        const res = await fetch('https://608298915dbd2c0017579fcc.mockapi.io/api/v1/products', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+        });
+        const body = res.json();
+        return body;
+    }
 
+    updateResource = async (id, newItem) => {
+        const res = await fetch(`https://608298915dbd2c0017579fcc.mockapi.io/api/v1/products/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newItem)
+        });
+        const body = res.json();
+        return body;
+    }
 
     getProducts = async () => {
         const items = await this.getResource(`products`);
@@ -34,6 +57,16 @@ class ApiServices {
     delProductById = async (id) => {
         const delItem = await this.delResource(`products/${id}`);
         return delItem;
+    }
+
+    addProduct = async (obj) => {
+        const addItem = await this.addResource(obj);
+        return addItem;
+    }
+
+    updateProduct = async (id, newItem) => {
+        const updateItem = await this.updateResource(id, newItem);
+        return updateItem;
     }
 
     //     getPopularGoods = async (catId) => {

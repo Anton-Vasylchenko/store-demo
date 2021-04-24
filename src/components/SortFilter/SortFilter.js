@@ -7,12 +7,16 @@ const sortFilters = [
 ];
 
 function SortFilter({ onToggleSort }) {
-    const [activeBtn, setActiveBtn] = React.useState(null);
+    const [activeBtn, setActiveBtn] = React.useState(0);
 
     const toggleActive = (index, type) => {
         setActiveBtn(index);
-        onToggleSort(type)
+        onToggleSort(type);
     }
+
+    React.useEffect(() => {
+        onToggleSort('count');
+    }, [])
 
     return (
         <div className="sort-filter">
