@@ -14,7 +14,8 @@ function ProductForm({ details }) {
     const [weight, setWeight] = React.useState(item ? item.weight : '');
     const [count, setCount] = React.useState(item ? item.count : '');
 
-    const onHandleSubmit = () => {
+    const onHandleSubmit = (e) => {
+        e.preventDefault();
         const product = {
             name, imageUrl, weight, count, info,
             size: {
