@@ -3,7 +3,7 @@ import './SortFilter.scss';
 
 const sortFilters = [
     { title: 'Імені', type: 'name' },
-    { title: 'Наявності', type: 'count' }
+    { title: 'Кількості', type: 'count' }
 ];
 
 function SortFilter({ onToggleSort }) {
