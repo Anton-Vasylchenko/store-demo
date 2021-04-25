@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
 import PopupDelete from '../PopupDelete';
 
-
 import NoImage from '../../assets/no-image.png';
 
 import './Product.scss';
 
 function Product({ item, onDelete }) {
-    const { id, name, imageUrl, count, info } = item;
     const [show, setShow] = React.useState(false);
+    const { id, name, imageUrl, count, info } = item;
 
     const handleNo = () => setShow(false);
 
@@ -47,12 +46,16 @@ function Product({ item, onDelete }) {
                     </div>
                 </Col>
                 <Col xs={12} md={7}>
-                    <div className="product__info"> {info} </div>
+                    <div className="product__info">
+                        {
+                            info.length > 80 ? info.substring(0, 80) + ' ...' : info
+                        }
+                    </div>
                     <div className="product__count"> In stock: {count} pcs.</div>
                 </Col>
             </Row>
             <div className="product__link">
-                <Link to={`/${id}`}>
+                <Link to={`/product/${id}`}>
                     <Button variant="info">More details...</Button>
                 </Link>
             </div>

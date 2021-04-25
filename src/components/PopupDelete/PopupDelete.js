@@ -7,9 +7,9 @@ function PopupDelete({ handleNo, handleYes, show, name }) {
         <>
             <Modal animation={true} show={show} onHide={handleNo}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Видалення продукту</Modal.Title>
+                    <Modal.Title>Delete {name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Are you sure you want to delete: <b>"{name}"</b>?</Modal.Body>
+                <Modal.Body>Are you sure you want to delete ?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleNo}>
                         No

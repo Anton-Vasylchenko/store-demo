@@ -5,20 +5,18 @@ import Spinner from '../Spinner';
 import CommentsList from '../CommentsList';
 import BtnCreateElement from '../BtnCreateElement';
 
-import ApiServices from '../../services/ApiServices';
+import apiServices from '../../services/ApiServices';
 
 import NoImage from '../../assets/no-image.png';
 
 import './ProductDetails.scss';
 
 function ProductDetails({ itemId }) {
-    const apiService = new ApiServices();
-
     const [product, setProduct] = React.useState(null);
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
-        apiService.getProductById(itemId).then(data => {
+        apiServices.getProductById(itemId).then(data => {
             setProduct(data);
             setLoading(false);
         })
@@ -29,11 +27,19 @@ function ProductDetails({ itemId }) {
     }
 
     const updateProduct = async (newItem) => {
-        setLoading(true);
-        apiService.updateProduct(itemId, newItem).then(data => {
+        apiServices.updateProductById(itemId, newItem).then(({ data }) => {
             setProduct(data);
             setLoading(false);
         })
+    }
+
+    const updateProductDetails = async (newItem) => {
+        setLoading(true);
+        updateProduct(newItem);
+    }
+
+    const updateProdComments = async (newItem) => {
+        updateProduct(newItem);
     }
 
     return (
@@ -43,11 +49,16 @@ function ProductDetails({ itemId }) {
                     product &&
                     <ProductView item={product}
                         defImg={addDefaultSrc}
-                        updateProduct={updateProduct}
+                        updateProduct={updateProductDetails}
                     />
                 }
 
-                {product && <CommentsList comments={product.comments} />}
+                {product && <CommentsList
+                    commentsList={product.comments}
+                    product={product}
+                    updateProduct={updateProduct}
+                    updateAllComments={updateProdComments}
+                />}
             </div>
         </Container>
     )
@@ -55,13 +66,15 @@ function ProductDetails({ itemId }) {
 
 const ProductView = ({ item, defImg, updateProduct }) => {
 
+    const { name, imageUrl, weight, count, size, info } = item;
+
     return (
         <React.Fragment>
             <div className="product-details">
                 <div className="product-details__name">
                     <BackArrow />
                     <p>
-                        {item.name}
+                        {name}
                     </p>
 
                     <BtnCreateElement
@@ -76,26 +89,26 @@ const ProductView = ({ item, defImg, updateProduct }) => {
                 <Row>
                     <Col xs={12} md={6}>
                         <div className="product-details__img">
-                            <img onError={defImg} src={item.imageUrl} alt="product-poster" />
+                            <img onError={defImg} src={imageUrl} alt="product-poster" />
                         </div>
                     </Col>
                     <Col xs={12} md={6}>
                         <div className="product-details__info">
-                            {item.info}
+                            {
+                                info
+                            }
                         </div>
                         <div className="product-details__options">
-
                             <div className="option options__size">
-                                <span>Висота: {item.size.height}</span>
-                                <span>Ширина: {item.size.width}</span>
+                                <span>Height: {size.height}</span>
+                                <span>Width: {size.width}</span>
                             </div>
                             <div className="option options__weight">
-                                <span>Вага: {item.weight}</span>
+                                <span>Weight: {weight}</span>
                             </div>
                             <div className="option options__count">
-                                <span>В наявності: {item.count} шт.</span>
+                                <span>In stock: {count} pcs.</span>
                             </div>
-
                         </div>
 
                     </Col>
@@ -104,7 +117,6 @@ const ProductView = ({ item, defImg, updateProduct }) => {
         </React.Fragment>
     )
 }
-
 
 export default ProductDetails;
 

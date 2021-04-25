@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import SortOrderArrow from '../SortOrderArrow';
+
 import './SortFilter.scss';
 
 const sortFilters = [
@@ -8,18 +10,23 @@ const sortFilters = [
 
 function SortFilter({ onToggleSort }) {
     const [activeBtn, setActiveBtn] = React.useState(0);
+    const [activeType, setActiveType] = React.useState('name');
+    const [activeOrderBy, setActiveOrderBy] = React.useState('asc');
 
     const toggleActive = (index, type) => {
         setActiveBtn(index);
-        onToggleSort(type);
+        setActiveType(type);
+        onToggleSort(type, activeOrderBy);
     }
 
-    React.useEffect(() => {
-        onToggleSort('count');
-    }, [])
+    const changeOrderType = (newType) => {
+        setActiveOrderBy(newType);
+        onToggleSort(activeType, newType);
+    }
 
     return (
         <div className="sort-filter">
+            <SortOrderArrow order={activeOrderBy} changeType={changeOrderType} />
             <span>Sort by:</span>
             <ul>
                 {sortFilters &&
@@ -32,6 +39,7 @@ function SortFilter({ onToggleSort }) {
                     })
                 }
             </ul>
+
         </div>
     );
 }

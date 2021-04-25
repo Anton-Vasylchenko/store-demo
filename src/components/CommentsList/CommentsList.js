@@ -1,30 +1,51 @@
 import React from 'react';
 import BtnCreateElement from '../BtnCreateElement';
+import Comment from '../Comment';
 
 import './CommentsList.scss';
 
-function CommentsList({ comments }) {
+function CommentsList({ updateAllComments, commentsList, product }) {
+    const onCreateComment = (obj) => {
+        product.comments.push(obj);
+        updateAllComments(product);
+    }
+
+    const onDeleteComment = (id) => {
+        const allComments = product.comments;
+        const updateComment = allComments.filter(function (obj) {
+            return obj.id !== id;
+        });
+        product.comments = updateComment;
+        updateAllComments(product);
+    }
+
+    const listIsEmpty = <p className="empty-list"> No comments to display </p>;
+
+    const allComments = Object.keys(commentsList).length ?
+        commentsList.map(item => {
+            return (
+                <Comment
+                    key={item.id}
+                    item={item}
+                    onDelete={onDeleteComment}
+                />)
+        }) : listIsEmpty
+
     return (
         <div className="comments-list">
             <h4>
                 Comments:
             </h4>
-            <BtnCreateElement nameBtn={'+Add comment'} type={'comment'} />
 
-            {comments.length > 0 ? comments.map(item => {
-                return (
-                    <div className="comment" key={item.id}>
-                        <div className="comment__del">x</div>
-                        <p>{item.text}</p>
+            <BtnCreateElement
+                nameBtn={'+Add comment'}
+                type={'comment'}
+                handleSubmit={onCreateComment}
+            />
 
-                        <div className="comment__bottom">
-                            <span>Дата:</span> {item.date}
-                        </div>
-                    </div>
-                )
-            }) : <p className="empty-list"> No comments to display </p>}
+            {allComments}
         </div>
     )
 }
 
-export default CommentsList
+export default CommentsList;

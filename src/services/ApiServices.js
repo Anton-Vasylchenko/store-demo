@@ -1,107 +1,43 @@
+import axios from 'axios';
+
 class ApiServices {
     _baseUrl = 'https://608298915dbd2c0017579fcc.mockapi.io/api/v1/';
 
-    getResource = async (url) => {
-        const res = await fetch(`${this._baseUrl}${url}`)
-        if (!res.ok) {
-            throw new Error(`Could not fetch ${url}, received ${res.status}`);
-        }
-        const body = res.json();
-        return body;
+    getResource = async (sortBy, sortOrder, url) => {
+        const { data } = await axios.get(`${this._baseUrl}${url}`, {
+            params: {
+                sortBy: sortBy,
+                order: sortOrder
+            }
+        })
+        return data;
     }
 
-    delResource = async (url) => {
-        const res = await fetch('https://608298915dbd2c0017579fcc.mockapi.io/api/v1/' + url, {
-            method: 'DELETE',
-        });
-        const body = res.json();
-        return body;
-    }
-
-    addResource = async (obj) => {
-        const res = await fetch('https://608298915dbd2c0017579fcc.mockapi.io/api/v1/products', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(obj)
-        });
-        const body = res.json();
-        return body;
-    }
-
-    updateResource = async (id, newItem) => {
-        const res = await fetch(`https://608298915dbd2c0017579fcc.mockapi.io/api/v1/products/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newItem)
-        });
-        const body = res.json();
-        return body;
-    }
-
-    getProducts = async () => {
-        const items = await this.getResource(`products`);
-        return items;
+    getProducts = async (sortBy, sortOrder) => {
+        const data = this.getResource(sortBy, sortOrder, 'products');
+        return data;
     }
 
     getProductById = async (id) => {
-        const item = await this.getResource(`products/${id}`);
-        return item;
-    }
-
-    delProductById = async (id) => {
-        const delItem = await this.delResource(`products/${id}`);
-        return delItem;
+        const { data } = await axios.get(`${this._baseUrl}products/${id}`);
+        return data;
     }
 
     addProduct = async (obj) => {
-        const addItem = await this.addResource(obj);
-        return addItem;
+        await axios.post(`${this._baseUrl}products/`, obj);
     }
 
-    updateProduct = async (id, newItem) => {
-        const updateItem = await this.updateResource(id, newItem);
-        return updateItem;
+    delProductById = async (id) => {
+        await axios.delete(`${this._baseUrl}products/${id}`);
     }
 
-    //     getPopularGoods = async (catId) => {
-    //         const { data } = await axios.get(`${this._baseUrl}shopItems`, {
-    //             params: {
-    //                 category: catId,
-    //                 _sort: 'rating',
-    //                 _order: 'desc',
-    //                 _start: 0,
-    //                 _end: 4
-    //             }
-    //         })
-    //         return data;
-    //     }
-
-    //     getShopItemById = async (id) => {
-    //         const { data } = await axios.get(`${this._baseUrl}shopItems`, {
-    //             params: {
-    //                 id: id
-    //             }
-    //         })
-    //         return data;
-    //     }
-
-    //     getShopCategories = async () => {
-    //         const items = await this.getResource(`shopCategories`);
-    //         return items;
-    //     }
-
-    //     getAdvantages = async () => {
-    //         const items = await this.getResource(`advantages`);
-    //         return items;
-    //     }
-
+    updateProductById = async (id, newItem) => {
+        const res = await axios.put(`${this._baseUrl}products/${id}`, newItem);
+        return res;
+    }
 }
 
-export default ApiServices;
+const apiServices = new ApiServices();
+
+export default apiServices;
 

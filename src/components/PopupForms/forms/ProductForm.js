@@ -22,7 +22,7 @@ function ProductForm({ details }) {
                 height,
                 width,
             },
-            comments: []
+            comments: item ? item.comments : []
         }
 
         if (!name || !imageUrl || !weight || !count || !info || !height || !width) {
