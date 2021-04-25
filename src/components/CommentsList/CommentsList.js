@@ -22,7 +22,7 @@ function CommentsList({ comments }) {
                         </div>
                     </div>
                 )
-            }) : <p className="empty-list">Коменти відсутні :( </p>}
+            }) : <p className="empty-list"> No comments to display </p>}
         </div>
     )
 }

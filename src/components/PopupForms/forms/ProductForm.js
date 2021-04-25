@@ -55,7 +55,6 @@ function ProductForm({ details }) {
     return (
         <>
             <Modal animation={true} show={show} onHide={onCancelHandle}>
-
                 <Modal.Header closeButton>
                     <Modal.Title>{formTitle} Product</Modal.Title>
                 </Modal.Header>
