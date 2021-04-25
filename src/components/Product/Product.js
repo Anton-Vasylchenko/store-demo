@@ -48,7 +48,7 @@ function Product({ item, onDelete }) {
                 <Col xs={12} md={7}>
                     <div className="product__info">
                         {
-                            info.length > 80 ? info.substring(0, 80) + ' ...' : info
+                            info.length > 70 ? info.substring(0, 70) + ' ...' : info
                         }
                     </div>
                     <div className="product__count"> In stock: {count} pcs.</div>

@@ -102,6 +102,7 @@ function ProductForm({ details }) {
                                 <Form.Control
                                     onChange={e => setHeight(e.target.value)}
                                     value={height}
+                                    placeholder="Height"
                                 />
                             </Form.Group>
 
@@ -110,6 +111,7 @@ function ProductForm({ details }) {
                                 <Form.Control
                                     onChange={e => setWidth(e.target.value)}
                                     value={width}
+                                    placeholder="Width"
                                 />
                             </Form.Group>
 
@@ -118,6 +120,7 @@ function ProductForm({ details }) {
                                 <Form.Control
                                     onChange={e => setWeight(e.target.value)}
                                     value={weight}
+                                    placeholder="Weight"
                                 />
                             </Form.Group>
 
@@ -126,6 +129,7 @@ function ProductForm({ details }) {
                                 <Form.Control
                                     onChange={e => setCount(e.target.value)}
                                     value={count}
+                                    placeholder="Count"
                                 />
                             </Form.Group>
                         </Form.Row>
