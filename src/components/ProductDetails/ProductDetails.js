@@ -94,9 +94,7 @@ const ProductView = ({ item, defImg, updateProduct }) => {
                     </Col>
                     <Col xs={12} md={6}>
                         <div className="product-details__info">
-                            {
-                                info
-                            }
+                            {info}
                         </div>
                         <div className="product-details__options">
                             <div className="option options__size">
