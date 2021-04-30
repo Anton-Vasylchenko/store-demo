@@ -1,6 +1,7 @@
 List of products with the ability to sort, delete and edit them. 
 
 You can also leave comments on the page of each product and, of course, delete them!
+
 For this project I created an API at mockapi.io.
 
 Used technologies: React, SASS, React-bootstrap;
