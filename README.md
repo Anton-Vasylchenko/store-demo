@@ -1,6 +1,6 @@
 # ABOUT THE PROJECT
 
-List of products with the ability to sort, delete and edit them. 
+List of products with the ability to sort, delete and edit them!
 
 You can also leave comments on the page of each product and, of course, delete them!
 
