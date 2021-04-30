@@ -8,6 +8,7 @@ function ProductForm({ details }) {
 
     const [error, setError] = React.useState(false);
     const [descCount, setDescCount] = React.useState(item ? item.shortDesc.length : 0);
+    const [nameCount, setNameCount] = React.useState(item ? item.name.length : 0);
 
     const [inputsValue, setInputsValue] = React.useState(item ? { ...item }
         : {
@@ -24,6 +25,7 @@ function ProductForm({ details }) {
 
     const updateState = (field, newValue) => {
         field === 'shortDesc' && setDescCount(newValue.length);
+        field === 'name' && setNameCount(newValue.length);
         setInputsValue({
             ...inputsValue,
             [field]: newValue
@@ -48,6 +50,11 @@ function ProductForm({ details }) {
         if (descCount > 70) {
             showErrorMsg(`Error! Short description 
             must be shorter than 60 characters`);
+            return;
+        }
+
+        if (nameCount > 26) {
+            showErrorMsg(`Error! Name must be shorter than 26 characters`);
             return;
         }
 
@@ -95,7 +102,12 @@ function ProductForm({ details }) {
                     <Form>
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridName">
-                                <Form.Label> <b>Name</b> </Form.Label>
+                                <Form.Label>
+                                    <b>Name: <span
+                                        className={nameCount > 26 ? 'text-danger' : ''}>
+                                        ({nameCount})</span>
+                                    </b>
+                                </Form.Label>
                                 <Form.Control
                                     onChange={e => updateState('name', e.target.value)}
                                     type="text"
@@ -117,9 +129,9 @@ function ProductForm({ details }) {
 
                         <Form.Group controlId="formGridDesc">
                             <Form.Label>
-                                <b>Short description:
-                                <span className={descCount > 70 ? 'text-danger' : ''}>
-                                        ({descCount})
+                                <b>Short description: <span
+                                    className={descCount > 70 ? 'text-danger' : ''}>
+                                    ({descCount})
                                 </span></b>
                             </Form.Label>
                             <Form.Control
@@ -137,7 +149,7 @@ function ProductForm({ details }) {
 
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridHeight">
-                                <Form.Label> <b> Height: </b></Form.Label>
+                                <Form.Label> <b> Height (cm.): </b></Form.Label>
                                 <Form.Control
                                     onChange={e => updateState('height', e.target.value)}
                                     value={inputsValue.height}
@@ -146,7 +158,7 @@ function ProductForm({ details }) {
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridWidth">
-                                <Form.Label> <b> Width: </b></Form.Label>
+                                <Form.Label> <b> Width (cm.): </b></Form.Label>
                                 <Form.Control
                                     onChange={e => updateState('width', e.target.value)}
                                     value={inputsValue.width}
