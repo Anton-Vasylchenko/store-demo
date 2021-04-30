@@ -45,7 +45,7 @@ function ProductForm({ details }) {
             }
         }
 
-        if (descCount > 60) {
+        if (descCount > 70) {
             showErrorMsg(`Error! Short description 
             must be shorter than 60 characters`);
             return;
@@ -118,7 +118,7 @@ function ProductForm({ details }) {
                         <Form.Group controlId="formGridDesc">
                             <Form.Label>
                                 <b>Short description:
-                                <span className={descCount > 60 ? 'text-danger' : ''}>
+                                <span className={descCount > 70 ? 'text-danger' : ''}>
                                         ({descCount})
                                 </span></b>
                             </Form.Label>

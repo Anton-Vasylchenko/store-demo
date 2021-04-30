@@ -106,8 +106,8 @@ const ProductView = ({ item, defImg, updateProduct, createMarkup }) => {
                         </div>
                         <div className="product-details__options">
                             <div className="option options__size">
-                                <span>Height: {height}</span>
-                                <span>Width: {width}</span>
+                                <span>Height: {height} cm.</span>
+                                <span>Width: {width} cm.</span>
                             </div>
                             <div className="option options__weight">
                                 <span>Weight: {weight}</span>
