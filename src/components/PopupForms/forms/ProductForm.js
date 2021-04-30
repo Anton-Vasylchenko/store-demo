@@ -99,7 +99,7 @@ function ProductForm({ details }) {
                                 <Form.Control
                                     onChange={e => updateState('name', e.target.value)}
                                     type="text"
-                                    placeholder="Enter product name"
+                                    placeholder="Enter the product name"
                                     value={inputsValue.name}
                                 />
                             </Form.Group>
@@ -110,7 +110,7 @@ function ProductForm({ details }) {
                                     onChange={e => updateState('imageUrl', e.target.value)}
                                     value={inputsValue.imageUrl}
                                     type="text"
-                                    placeholder="Enter image url"
+                                    placeholder="Enter the image url"
                                 />
                             </Form.Group>
                         </Form.Row>
@@ -125,7 +125,7 @@ function ProductForm({ details }) {
                             <Form.Control
                                 onChange={e => updateState('shortDesc', e.target.value)}
                                 value={inputsValue.shortDesc}
-                                placeholder="Enter a short product description"
+                                placeholder="Enter the short product description"
                             />
                         </Form.Group>
 
