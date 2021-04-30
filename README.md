@@ -9,5 +9,6 @@ Used technologies: React, SASS, React-bootstrap;
 # DEMO
 
 https://anton-vasylchenko.github.io/store-demo/build/index.html#/
+Enjoy :))
 
 
