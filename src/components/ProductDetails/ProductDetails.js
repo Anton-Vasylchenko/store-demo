@@ -4,6 +4,7 @@ import BackArrow from '../BackArrow';
 import Spinner from '../Spinner';
 import CommentsList from '../CommentsList';
 import BtnCreateElement from '../BtnCreateElement';
+import parse from 'html-react-parser';
 
 import apiServices from '../../services/ApiServices';
 
@@ -42,6 +43,12 @@ function ProductDetails({ itemId }) {
         updateProduct(newItem);
     }
 
+    const createMarkup = (info) => {
+        return {
+            __html: info
+        };
+    };
+
     return (
         <Container>
             <div className="content-wrapper">
@@ -50,6 +57,7 @@ function ProductDetails({ itemId }) {
                     <ProductView item={product}
                         defImg={addDefaultSrc}
                         updateProduct={updateProductDetails}
+                        createMarkup={createMarkup}
                     />
                 }
 
@@ -64,9 +72,9 @@ function ProductDetails({ itemId }) {
     )
 };
 
-const ProductView = ({ item, defImg, updateProduct }) => {
+const ProductView = ({ item, defImg, updateProduct, createMarkup }) => {
 
-    const { name, imageUrl, weight, count, size, info } = item;
+    const { name, imageUrl, weight, count, width, height, info } = item;
 
     return (
         <React.Fragment>
@@ -94,12 +102,12 @@ const ProductView = ({ item, defImg, updateProduct }) => {
                     </Col>
                     <Col xs={12} md={6}>
                         <div className="product-details__info">
-                            {info}
+                            <div>{parse(info)}</div>
                         </div>
                         <div className="product-details__options">
                             <div className="option options__size">
-                                <span>Height: {size.height}</span>
-                                <span>Width: {size.width}</span>
+                                <span>Height: {height}</span>
+                                <span>Width: {width}</span>
                             </div>
                             <div className="option options__weight">
                                 <span>Weight: {weight}</span>
@@ -115,6 +123,8 @@ const ProductView = ({ item, defImg, updateProduct }) => {
         </React.Fragment>
     )
 }
+
+
 
 export default ProductDetails;
 

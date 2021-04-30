@@ -9,7 +9,7 @@ import './Product.scss';
 
 function Product({ item, onDelete }) {
     const [show, setShow] = React.useState(false);
-    const { id, name, imageUrl, count, info } = item;
+    const { id, name, imageUrl, count, shortDesc } = item;
 
     const handleNo = () => setShow(false);
 
@@ -47,9 +47,7 @@ function Product({ item, onDelete }) {
                 </Col>
                 <Col xs={12} md={7}>
                     <div className="product__info">
-                        {
-                            info.length > 70 ? info.substring(0, 70) + ' ...' : info
-                        }
+                        {shortDesc}
                     </div>
                     <div className="product__count"> In stock: {count} pcs.</div>
                 </Col>

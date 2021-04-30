@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ProductForm from './forms/ProductForm';
-import CommentForm from './forms/CommentForm';
+import ProductForm from './Forms/ProductForm';
+import CommentForm from './Forms/CommentForm';
 
 function PopupForm(props) {
     const { type } = props;
