@@ -1,4 +1,4 @@
-# ABOUT PROJECT
+# ABOUT THE PROJECT
 
 List of products with the ability to sort, delete and edit them. 
 
