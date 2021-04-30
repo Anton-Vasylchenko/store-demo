@@ -125,7 +125,7 @@ function ProductForm({ details }) {
                             <Form.Control
                                 onChange={e => updateState('shortDesc', e.target.value)}
                                 value={inputsValue.shortDesc}
-                                placeholder="Enter a couple words about product"
+                                placeholder="Enter a short product description"
                             />
                         </Form.Group>
 
