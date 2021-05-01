@@ -42,7 +42,7 @@ function ProductForm({ details }) {
 
         for (let key in inputsValue) {
             if (inputsValue[key] === '') {
-                showErrorMsg('Error! Some fields are empty!');
+                showErrorMsg('Error! Some fields are empty!!!');
                 return;
             }
         }
