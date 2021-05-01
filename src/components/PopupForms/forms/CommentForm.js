@@ -40,7 +40,8 @@ function CommentForm({ details }) {
         const today = new Date();
         const day = today.toJSON().slice(0, 10).replace(/-/g, '/');
         const minutes = (today.getMinutes() < 10 ? '0' : '') + today.getMinutes();
-        const time = today.getHours() + ":" + minutes + ":" + today.getSeconds();
+        const seconds = (today.getSeconds() < 10 ? '0' : '') + today.getSeconds();
+        const time = today.getHours() + ":" + minutes + ":" + seconds;
         return `${day} - ${time}`;
     }
 

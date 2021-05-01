@@ -19,7 +19,8 @@ function TextEditor({ content, onChangeInfo }) {
                     data={text}
                     config={{
                         toolbar: ['heading', '|', 'bold', 'italic', 'link', 'numberedList', 'bulletedList', 'insertTable',
-                            'tableColumn', 'tableRow', 'mergeTableCells', '|', 'undo', 'redo']
+                            'tableColumn', 'tableRow', 'mergeTableCells', '|', 'undo', 'redo'],
+                        placeholder: 'Enter the product description'
                     }}
                     onChange={(event, editor) => {
                         onSaveShanges(event, editor);

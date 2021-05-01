@@ -14,12 +14,12 @@ function ProductForm({ details }) {
         : {
             name: '',
             imageUrl: '',
-            count: 0,
+            count: '',
             info: '',
             shortDesc: '',
-            height: 0,
-            width: 0,
-            weight: 0,
+            height: '',
+            width: '',
+            weight: '',
             comments: [],
         });
 
@@ -53,8 +53,8 @@ function ProductForm({ details }) {
             return;
         }
 
-        if (nameCount > 26) {
-            showErrorMsg(`Error! Name must be shorter than 26 characters`);
+        if (nameCount > 27) {
+            showErrorMsg(`Error! Name must be shorter than 27 characters`);
             return;
         }
 
@@ -104,7 +104,7 @@ function ProductForm({ details }) {
                             <Form.Group as={Col} controlId="formGridName">
                                 <Form.Label>
                                     <b>Name: <span
-                                        className={nameCount > 26 ? 'text-danger' : ''}>
+                                        className={nameCount > 27 ? 'text-danger' : ''}>
                                         ({nameCount})</span>
                                     </b>
                                 </Form.Label>
@@ -149,20 +149,20 @@ function ProductForm({ details }) {
 
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridHeight">
-                                <Form.Label> <b> Height (cm.): </b></Form.Label>
+                                <Form.Label> <b> Height: </b></Form.Label>
                                 <Form.Control
                                     onChange={e => updateState('height', e.target.value)}
                                     value={inputsValue.height}
-                                    placeholder="Height"
+                                    placeholder="Height in cm"
                                 />
                             </Form.Group>
 
                             <Form.Group as={Col} controlId="formGridWidth">
-                                <Form.Label> <b> Width (cm.): </b></Form.Label>
+                                <Form.Label> <b> Width: </b></Form.Label>
                                 <Form.Control
                                     onChange={e => updateState('width', e.target.value)}
                                     value={inputsValue.width}
-                                    placeholder="Width"
+                                    placeholder="Width in cm"
                                 />
                             </Form.Group>
 
