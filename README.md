@@ -1,4 +1,4 @@
-# ABOUT THE PROJECT
+# ABOUT THE PROJECT:
 
 List of products with the ability to sort, delete and edit them!
 
@@ -8,7 +8,7 @@ For this project I created an API on https://mockapi.io/
 
 Used technologies: React, SASS, React-bootstrap;
 
-# DEMO
+# DEMO:
 
 https://anton-vasylchenko.github.io/store-demo/build/index.html#/
 
